@@ -38,6 +38,7 @@ def init_redis():
         _redis_client = redis.Redis(
             host=Config.REDIS_HOST,
             port=Config.REDIS_PORT,
+            password=getattr(Config, 'REDIS_PASSWORD', None), # Para poder usar no Railway
             db=Config.REDIS_DB,
             decode_responses=False,  # Retorna bytes para compatibilidade
             socket_connect_timeout=2,
